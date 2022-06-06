@@ -1,17 +1,23 @@
 import React, {ChangeEvent, useState} from 'react';
+import { useDispatch } from 'react-redux';
 
 import Layout from '../components/login/layout';
 import Input from '../components/common/Input';
 import {onChangeHandler} from '../utils/onChangeHandler';
 
+import {sendForgotPasswordLink} from '../redux/actions/authActions';
+
 const ForgotPassword = () =>{
+
+    const dispatch = useDispatch();
 
     const [formState, setFormState] = useState({
         recoveryEmail: '',
     });
 
-    const handleForgotPassword = () =>{
-
+    const handleForgotPassword = (e:any) =>{
+        e.preventDefault();
+        dispatch(sendForgotPasswordLink(formState.recoveryEmail));
     };
 
     const handleOnChange=(e: ChangeEvent<HTMLInputElement> ) => {
@@ -30,9 +36,9 @@ const ForgotPassword = () =>{
                         <Input
                             value={formState.recoveryEmail}
                             onChange={ handleOnChange }
-                            type='email'
+                            type='text'
                             name='recoveryEmail'
-                            placeholder='Recovery email'
+                            placeholder='Enter your ID'
                             required={ true }
                         />
                     </div>

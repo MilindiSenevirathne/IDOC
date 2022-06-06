@@ -9,7 +9,7 @@ const Input = (
         label,
         placeholder,
         required = false,
-        style
+        style,
     } : {
         value: string | number,
         onChange: any,
@@ -18,7 +18,7 @@ const Input = (
         label?: string,
         placeholder: string
         required?: boolean,
-        style?: any
+        style?: any,
     }) => {
 
     return (

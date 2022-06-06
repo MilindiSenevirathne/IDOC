@@ -1,5 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import {Link} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 
 import Layout from '../components/login/layout';
 import Input from '../components/common/Input';
@@ -7,15 +9,20 @@ import Checkbox from '../components/common/Checkbox';
 
 import { onChangeHandler } from '../utils/onChangeHandler';
 
+import { userLogin } from '../redux/actions/authActions';
+
 const Login = () =>{
+
+    const dispatch = useDispatch();
 
     const [formState, setFormState] = useState({
         username: '',
         password: ''
     });
 
-    const handleUserLogin = () =>{
-
+    const handleUserLogin = (e: { preventDefault: () => void; }) =>{
+        e.preventDefault();
+        dispatch(userLogin(formState));
     };
 
     const handleOnChange=(e: ChangeEvent<HTMLInputElement> ) => {

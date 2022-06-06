@@ -1,25 +1,27 @@
-import { ChangeEvent } from "react";
+import {ChangeEvent} from 'react';
 
-export const onChangeHandler = ({
-    e,
-    formState,
-    setFormState,
-}: {
-    e: ChangeEvent<HTMLInputElement>;
-    formState: any;
-    setFormState: any;
-}) => {
+export const onChangeHandler = (
+    {
+        e,
+        formState,
+        setFormState
+    } : {
+        e: ChangeEvent<HTMLInputElement>
+        formState: any,
+        setFormState: any
+    }) =>{
     const { value, name, type } = e.target;
 
-    if (type === "checkbox") {
+    if(type === 'checkbox'){
         setFormState({
             ...formState,
-            [name]: !formState[name],
+            [ name ] : !formState[name]
         });
-    } else {
+    }
+    else {
         setFormState({
             ...formState,
-            [name]: value,
+            [ name ] : value
         });
     }
 };
